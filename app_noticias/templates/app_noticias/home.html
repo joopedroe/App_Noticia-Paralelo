@@ -1,0 +1,24 @@
+<div>
+		<a href="http://localhost:8000/cadastro/"> <p><h3> Nova Noticias</p></h3> </a>
+	<!---<h1>Nomes</h1>
+	{% for pessoa in pessoas %}
+		<h3>{{pessoa.nome}}</h3>
+	{% endfor %}
+</div>-->
+<h1>Notícias</h1>
+{% for noticia in noticias %}
+	<div>
+		<h2>{{noticia.titulo}}</h2>
+		<p>{{noticia.conteudo | linebreaksbr}}</p>
+		<br>
+	</div>
+{% endfor %}
+<!--{% for noticia in object_list %}
+	{% if noticia.publicado %}
+	<div>
+		<h2>{{noticia.titulo}}</h2>
+		<p>{{noticia.conteudo | linebreaksbr}}</p>
+		<br>
+	</div>
+	{% endif %}
+{% endfor %}-->
