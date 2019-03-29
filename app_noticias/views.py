@@ -26,9 +26,39 @@ def RetornaNoticia(request):
 def get_cadastro(request):
     if request.method == "POST":
         form=NoticiaForms(request.POST)
-        if form.is_valid ():
+        if form.is_valid():  
             form.save()
             return redirect('home')
     else:
         form=NoticiaForms()
     return render (request,'app_noticias/inicial.html',{'form':form})
+
+def get_cadastroAutor(request):
+    if request.method == "POST":
+        form=PessoaForms(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('pessoas')
+    else:
+        form=PessoaForms()
+    return render (request,'app_noticias/pessoa.html',{'form':form})
+
+def get_cadastroTags(request):
+    if request.method == 'POST':
+        form=TagsForms(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('pessoas')
+    else:
+        form=TagsForms()
+    return render (request, 'app_noticias/tags.html',{'form':form})
+
+def get_cadastroUser(request):
+    if request.method == 'POST':
+        form=UserForms(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form=UserForms()
+    return render (request, 'app_noticias/usuario.html',{'form':form})

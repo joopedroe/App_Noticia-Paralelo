@@ -1,11 +1,54 @@
+<html>
+		{% load static %}
+		<head>
+		  <!-- Title -->
+		  <title>
+			{% block title %}Sistema Noticia{% endblock %}
+		  </title>
+		  {% load widget_tweaks %}
+		  <head>
+			  <meta charset="UTF-8">
+			  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+			  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	  
+		  <!-- Bloco de Estilos -->
+		  {% block styles %}{% endblock %}
+		</head>
+	  
+		<body>
+	   
 <div>
-		<a href="http://localhost:8000/cadastro/"> <p><h3> Nova Noticias</p></h3> </a>
-	<!---<h1>Nomes</h1>
-	{% for pessoa in pessoas %}
-		<h3>{{pessoa.nome}}</h3>
-	{% endfor %}
-</div>-->
-<h1>Notícias</h1>
+		
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<a class="navbar-brand" href="http://localhost:8000/">
+				  <img src="data:image/png;base64,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" height='45px'>
+				</a>
+				
+				<button class="navbar-toggler" type="button" 
+					data-toggle="collapse" data-target="#conteudo-navbar" 
+					aria-controls="conteudo-navbar" aria-expanded="false" 
+					aria-label="Ativar navegação">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+		<div class="collapse navbar-collapse" id="conteudo-navbar">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="http://localhost:8000/inicial/">
+						  Página Inicial
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="http://localhost:8000/">
+						  Notícias
+						</a>
+					</li>
+				</ul>           
+			</div>
+		</nav>
+		<a href="http://localhost:8000/cadastro/"> <p><h3> Cadastrar Noticia</p></h3> </a>
+		<a href="http://localhost:8000/cadastro/autor"> <p><h3> Cadastrar Autor</p></h3> </a>
+		<a href="http://localhost:8000/cadastro/tags"> <p><h3> Cadastrar Tag</p></h3> </a>
+		<a href="http://localhost:8000/cadastro/usuario"> <p><h3> Cadastrar Usuario</p></h3> </a>
 {% for noticia in noticias %}
 	<div>
 		<h2>{{noticia.titulo}}</h2>
